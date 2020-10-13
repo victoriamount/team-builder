@@ -1,24 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
+import Roster from './components/Roster'
 import './App.css';
 
+const sampleTeamList = [
+  { name:'Shayne', email: 'shayne@email.com', role: 'student'},
+  { name:'Victoria', email: 'victoria@email.com', role: 'instructor'},
+  { name:'Sterling', email: 'sterling@email.com', role: 'tl'}
+];
+
+const initialFormValues = {
+  name:'', 
+  email: '', 
+  role: '',
+};
+
+
+
 function App() {
+  const [teamList, setTeamList] = useState(sampleTeamList)
+  const [formValues, setFormValues] = useState(initialFormValues);
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Roster teamList={teamList} />
     </div>
   );
 }
