@@ -1,4 +1,12 @@
 import React from 'react';
+import Member from './Member'
+import Styled from 'styled-components'
+
+const StyledRoster = Styled.div`
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+`
 
 export default function Roster(props) {
     const { teamList } = props
@@ -7,9 +15,11 @@ export default function Roster(props) {
     return (
         <div className='team-roster'>
             <h3>Team Roster:</h3>
-            {teamList.map((member, index) => (
-                <p className="team-member" key={index}>{member.name} </p>
-            ))}
+            <StyledRoster>
+                {teamList.map((member, index) => (
+                    <Member member={member} key={index} />
+                ))}
+            </StyledRoster>
         </div>
     )
 }
